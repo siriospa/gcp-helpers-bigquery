@@ -3,6 +3,7 @@
 ![GitHub License](https://img.shields.io/github/license/siriospa/gcp-helpers-bigquery)
 ![GitHub package.json](https://img.shields.io/github/package-json/version/siriospa/gcp-helpers-bigquery)
 ![GitHub top language](https://img.shields.io/github/languages/top/siriospa/gcp-helpers-bigquery)
+![NPM Version](https://img.shields.io/npm/v/%40siriospa%2Fgcp-helpers-bigquery)
 
 Helpers for Google Cloud BigQuery.
 
