@@ -1,0 +1,35 @@
+{
+  "name": "@siriospa/gcp-helpers-bigquery",
+  "private": false,
+  "version": "1.0.0",
+  "description": "Google Cloud Functions connector for Dedalo data.",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf ./dist && mkdirp ./dist && babel src --out-dir dist --copy-files && copyfiles {package.json,README.md,LICENSE} ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siriospa/gcp-helpers-bigquery.git"
+  },
+  "keywords": [
+    "sirio",
+    "bigquery",
+    "google-cloud-platform",
+    "gcp"
+  ],
+  "author": "Lucio Benini <lucio.benini@pittica.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/siriospa/gcp-helpers-bigquery/issues"
+  },
+  "homepage": "https://github.com/siriospa/gcp-helpers-bigquery#README.md",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.9",
+    "copyfiles": "^2.4.1",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5"
+  }
+}
