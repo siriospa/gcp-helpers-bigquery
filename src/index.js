@@ -59,34 +59,32 @@ exports.table = async (dataset, name, options, keys) => {
           query: `ALTER TABLE \`${dataset.id}.${name}\` ADD PRIMARY KEY (${pk}) NOT ENFORCED;`,
         })
 
-        if (typeof keys.foreign !== "undefined") {
-          let fks = []
+        job.on("complete", async () => {
+          if (typeof keys.foreign !== "undefined") {
+            let fks = []
 
-          if (!Array.isArray(keys.foreign)) {
-            fks = [keys.foreign]
-          } else {
-            fks = keys.foreign
-          }
-
-          await job.getQueryResults()
-
-          for (index in fks) {
-            let fk = ""
-            if (Array.isArray(fks[index].key)) {
-              fk = fks[index].key.join(", ")
+            if (!Array.isArray(keys.foreign)) {
+              fks = [keys.foreign]
             } else {
-              fk = fks[index].key
+              fks = keys.foreign
             }
 
-            const [fkJob] = await dataset.bigQuery.createQueryJob({
-              query: `ALTER TABLE \`${dataset.id}.${name}\` ADD CONSTRAINT ${fks[index].name} FOREIGN KEY (${fk}) REFERENCES ${dataset.id}.${fks[index].table}(${fks[index].reference || pk}) NOT ENFORCED;`,
-            })
+            for (index in fks) {
+              let fk = ""
+              if (Array.isArray(fks[index].key)) {
+                fk = fks[index].key.join(", ")
+              } else {
+                fk = fks[index].key
+              }
 
-            await fkJob.getQueryResults()
+              const [fkJob] = await dataset.bigQuery.createQueryJob({
+                query: `ALTER TABLE \`${dataset.id}.${name}\` ADD CONSTRAINT ${fks[index].name} FOREIGN KEY (${fk}) REFERENCES ${dataset.id}.${fks[index].table}(${fks[index].reference || pk}) NOT ENFORCED;`,
+              })
+
+              await fkJob.getQueryResults()
+            }
           }
-        } else {
-          await job.getQueryResults()
-        }
+        })
       }
     }
 
