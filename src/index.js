@@ -17,14 +17,18 @@
  *
  * @param {object} client BigQuery client.
  * @param {string} name ID or name.
+ * @param {object} options Creation options.
  * @returns The dataset with the given name.
  */
-exports.dataset = async (client, name) => {
+exports.dataset = async (client, name, options) => {
   const dataset = client.dataset(name)
   const [status] = await dataset.exists()
 
   if (!status) {
-    return await dataset.create()
+    return await dataset.create({
+      ...{ location: "us-central1" },
+      ...options,
+    })
   } else {
     return await dataset.get()
   }
