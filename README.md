@@ -1,4 +1,4 @@
-# Google Cloud Platform Functions for Dedalo
+# Google Cloud Platform Helpers for BigQuery
 
 ![GitHub License](https://img.shields.io/github/license/siriospa/gcp-helpers-bigquery)
 ![GitHub package.json](https://img.shields.io/github/package-json/version/siriospa/gcp-helpers-bigquery)
