@@ -1,7 +1,7 @@
 {
   "name": "@siriospa/gcp-helpers-bigquery",
   "private": false,
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Helpers for Google Cloud BigQuery.",
   "main": "dist/index.js",
   "scripts": {

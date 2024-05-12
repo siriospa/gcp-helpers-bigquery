@@ -15,7 +15,7 @@
 const { dataset, getDataset, cleanDataset } = require("./dataset")
 const { executeSqlFile, existsSqlFile, readSqlFile } = require("./query")
 const { table, getTables } = require("./table")
-const { jobDone } = require("./jobs")
+const { jobDone } = require("./job")
 
 exports.dataset = dataset
 exports.getDataset = getDataset
