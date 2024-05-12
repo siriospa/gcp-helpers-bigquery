@@ -1,7 +1,7 @@
 {
   "name": "@siriospa/gcp-helpers-bigquery",
   "private": false,
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Helpers for Google Cloud BigQuery.",
   "main": "dist/index.js",
   "scripts": {
@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/siriospa/gcp-helpers-bigquery#README.md",
   "dependencies": {
-    "@google-cloud/bigquery": "^7.7.0"
+    "@google-cloud/bigquery": "^7.7.0",
+    "@siriospa/gcp-functions-logger": "^1.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.1",

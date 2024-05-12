@@ -13,6 +13,7 @@
 // limitations under the License.
 
 const { BigQuery } = require("@google-cloud/bigquery")
+const log = require("@siriospa/gcp-functions-logger")
 const { getTables } = require("./table")
 
 /**
@@ -62,7 +63,7 @@ exports.cleanDataset = async (regex = ".*") => {
 
   tables.forEach((table) => {
     if (r.test(table.id)) {
-      table.delete().then(() => console.log(`[Success] ${table.id} deleted.`))
+      table.delete().then(() => log.success(`${table.id} deleted.`))
     }
   })
 }
