@@ -12,17 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const { dataset, getDataset, cleanDataset } = require("./dataset")
-const { executeSqlFile, existsSqlFile, readSqlFile } = require("./query")
-const { table, getTables } = require("./table")
-const { jobDone } = require("./jobs")
+/**
+ * Indicates whether the given jobs has been done.
+ *
+ * @param {Array} jobs BigQuery jobs.
+ * @returns A value indicating whether the given jobs has been done.
+ */
+exports.jobDone = (jobs) => {
+  let done = false
 
-exports.dataset = dataset
-exports.getDataset = getDataset
-exports.cleanDataset = cleanDataset
-exports.table = table
-exports.getTables = getTables
-exports.executeSqlFile = executeSqlFile
-exports.existsSqlFile = existsSqlFile
-exports.readSqlFile = readSqlFile
-exports.jobDone = jobDone
+  jobs.forEach(({ status: { state } }) => {
+    if (state.toUpperCase() === "DONE") {
+      done = true
+    }
+  })
+
+  return done
+}
