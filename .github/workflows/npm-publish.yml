@@ -32,7 +32,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Publish
-        working-directory: ./dist
+        working-directory: ./
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
@@ -54,7 +54,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Publish
-        working-directory: ./dist
+        working-directory: ./
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
