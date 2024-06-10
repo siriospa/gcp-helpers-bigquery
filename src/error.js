@@ -12,19 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const { dataset, getDataset, cleanDataset } = require("./dataset")
-const { executeSqlFile, existsSqlFile, readSqlFile } = require("./query")
-const { table, getTables } = require("./table")
-const { jobDone } = require("./job")
-const { logErrors } = require("./error")
+const log = require("@siriospa/gcp-functions-logger")
 
-exports.dataset = dataset
-exports.getDataset = getDataset
-exports.cleanDataset = cleanDataset
-exports.table = table
-exports.getTables = getTables
-exports.executeSqlFile = executeSqlFile
-exports.existsSqlFile = existsSqlFile
-exports.readSqlFile = readSqlFile
-exports.jobDone = jobDone
-exports.logErrors = logErrors
+/**
+ * Handles catch statement and logs errore.
+ *
+ * @param {object} error Error object.
+ * @returns {boolean} Always returns "False".
+ */
+exports.logErrors = ({ code, errors }) => {
+  if (errors) {
+    errors.map(({ message, reason }) =>
+      log.error([code || reason, name, message])
+    )
+  }
+
+  return false
+}

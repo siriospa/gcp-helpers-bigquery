@@ -22,7 +22,7 @@ const { getTables } = require("./table")
  * @param {BigQuery} client BigQuery client.
  * @param {string} name ID or name.
  * @param {object} options Creation options.
- * @returns The dataset with the given name.
+ * @returns {Dataset} The dataset with the given name.
  */
 exports.dataset = async (client, name, options) => {
   const dataset = client.dataset(name)

@@ -1,7 +1,7 @@
 {
   "name": "@siriospa/gcp-helpers-bigquery",
   "private": false,
-  "version": "1.4.3",
+  "version": "1.5.0",
   "description": "Helpers for Google Cloud BigQuery.",
   "main": "dist/index.js",
   "scripts": {
@@ -29,9 +29,9 @@
     "@siriospa/gcp-functions-logger": "^1.0.4"
   },
   "devDependencies": {
-    "@babel/cli": "^7.24.6",
+    "@babel/cli": "^7.24.7",
     "mkdirp": "^3.0.1",
-    "prettier": "^3.3.0",
+    "prettier": "^3.3.1",
     "rimraf": "^5.0.7"
   }
 }
