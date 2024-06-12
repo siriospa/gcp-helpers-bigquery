@@ -23,7 +23,7 @@ const log = require("@siriospa/gcp-functions-logger")
 exports.logErrors = ({ code, errors }) => {
   if (errors) {
     errors.map(({ message, reason }) =>
-      log.error([code || reason, name, message])
+      log.error([code || reason, message])
     )
   }
 
