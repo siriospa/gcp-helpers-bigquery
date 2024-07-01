@@ -21,8 +21,11 @@
 exports.jobDone = (jobs) => {
   let done = false
 
-  jobs.forEach(({ status: { state } }) => {
-    if (state.toUpperCase() === "DONE") {
+  jobs.forEach(({ status }) => {
+    if (
+      typeof status !== "undefined" &&
+      status.state.toUpperCase() === "DONE"
+    ) {
       done = true
     }
   })

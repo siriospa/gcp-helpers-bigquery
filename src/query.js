@@ -13,13 +13,14 @@
 // limitations under the License.
 
 const fs = require("fs")
+const { logErrors } = require("./error")
 
 /**
  * Returns the SQL script related to the given name.
  *
  * @param {object} filepath Path of the SQL file.
  * @param {BigQuery} client BigQuery client.
- * @returns {object} The SQL script related to the given name.
+ * @returns {boolean} A value indicating whether the SQL script has been executed.
  */
 exports.executeSqlFile = async (filepath, client, params) => {
   const query = this.readSqlFile(filepath)
@@ -30,10 +31,18 @@ exports.executeSqlFile = async (filepath, client, params) => {
       params,
     })
 
-    return await job.getQueryResults()
-  }
+    const results = await job.getQueryResults().catch(logErrors)
+    let done = false
 
-  return null
+    results.forEach(({ jobComplete }) => {
+      if (typeof jobComplete !== "undefined" && jobComplete === true) {
+        done = true
+      }
+    })
+
+    return done
+  }
+  return false
 }
 
 /**
